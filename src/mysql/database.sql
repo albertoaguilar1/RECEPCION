@@ -1,0 +1,14 @@
+CREATE DATABASE dbusuarios;
+
+
+CREATE TABLE usuarios(
+  id INT(4) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(45) NOT NULL
+  );
+
+
+
+
+
+
+
