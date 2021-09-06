@@ -6,7 +6,7 @@
     "password": "root1234",
     "database": "dbrestaurante",
     "entities": [
-        "dist/src/entity/*.js"
+        "dist/src/entity/*.{.ts,.js}"
     ],
     "logging": true,
     "synchronize": true
