@@ -1,11 +1,13 @@
 import express, { Application } from "express";
 import morgan from "morgan";
+import bodyParser from "body-parser";
 import 'reflect-metadata';
 import indexRoute from './router/index.routes';
-//import Orderitem from './router/orderitem.routes';
-//import Orden from './router/orden.routes';
-//import Usuarios from './router/usuario.routes';
+import Orderitem from './router/orderitem.routes';
+import Orden from './router/orden.routes';
+import user from './router/usuario.routes';
 import Items from './router/item.routes';
+
 import { createConnection } from "typeorm";
 
 // Create contructor para  app y un apropiedad de tipo Application
@@ -20,6 +22,7 @@ export class App {
         this.routes();
         createConnection();
 
+
     }
 
 
@@ -27,18 +30,22 @@ export class App {
     setting() {
 
         this.app.set('port', this.port || process.env.PORT || 3000);
+
     }
 
     middlewares() {
 
         this.app.use(morgan('dev'));
+
     }
     routes() {
+
+
         this.app.use('/api', indexRoute);
         this.app.use('/Items', Items);
-        /*    this.app.use('/Orden', Orden);
+        this.app.use('/Orden', Orden);
         this.app.use('/Orderitem', Orderitem);
-        this.app.use('/Usuarios', Usuarios);*/
+        this.app.use('/user', user);
 
     }
 
@@ -51,3 +58,5 @@ export class App {
     }
 
 }
+
+

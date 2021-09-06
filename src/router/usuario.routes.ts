@@ -1,10 +1,10 @@
-/*import { Router } from 'express'
+import { Router } from 'express'
 const router = Router();
 
-import { getUsuarios } from '../controllers/usuarios'
+import { getUsers } from '../controllers/user'
 
-router.route('/').
-    get((getUsuarios));
+router.route('/').get((getUsers));
+router.route('/saveUser').get((getUsers));
 
 
-export default router;*/
+export default router;

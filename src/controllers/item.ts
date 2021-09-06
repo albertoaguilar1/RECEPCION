@@ -9,6 +9,12 @@ export const getItems = async (req: Request, res: Response): Promise<Response> =
     return res.json(items);
 };
 
+export const createItems = async (req: Request, res: Response): Promise<Response> => {
+    const newItem = getRepository(Item).create(req.body);
+    const result = await getRepository(Item).save(newItem);
+    return res.json(result);
+};
+
 
 /*import { Request, Response } from "express";
 

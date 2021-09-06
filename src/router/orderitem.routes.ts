@@ -1,11 +1,11 @@
-/*import { Router } from 'express'
+import { Router } from 'express'
 const router = Router();
 
-import { getOrderitem } from '../controllers/orderitem'
+import { getOrderItems, createOrderItems } from '../controllers/orderitem'
 
 
-router.route('/').
-    get((getOrderitem));
 
+router.route('/').get((getOrderItems));
+router.route('/saveOrderItem').post((createOrderItems));
 
-export default router;*/
+export default router;

@@ -1,10 +1,16 @@
-/*import { Request, Response } from "express";
+import { Request, Response } from "express";
+import { getRepository } from "typeorm";
+import { User } from "../entity/user";
 
-import { connect } from '../database'
 
 
-export async function getUsuarios(req: Request, res: Response): Promise<Response> {
-    const conn = await connect();
-    const usuarios = await conn.query('SELECT * FROM usuarios');
-    return res.json(usuarios[0]);
-}*/
+export const getUsers = async (req: Request, res: Response): Promise<Response> => {
+    const users = await getRepository(User).find();
+    return res.json(users);
+};
+
+export const createUser = async (req: Request, res: Response): Promise<Response> => {
+    const newUser = getRepository(User).create(req.body);
+    const result = await getRepository(User).save(newUser);
+    return res.json(result);
+}
