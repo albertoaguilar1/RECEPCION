@@ -1,3 +1,4 @@
+import { Item } from "@/entity/item";
 import { Request, Response } from "express";
 import { getRepository } from "typeorm";
 import { order_item } from "../entity/order_item";
@@ -5,9 +6,12 @@ import { order_item } from "../entity/order_item";
 
 
 export const getOrderItems = async (req: Request, res: Response): Promise<Response> => {
-    const order_items = await getRepository(order_item).find();
+    const order_items = await getRepository(order_item).find({ relations: ["order", "item"] });
     return res.json(order_items);
+
 };
+
+
 
 export const createOrderItems = async (req: Request, res: Response): Promise<Response> => {
     const newItem = getRepository(order_item).create(req.body);
