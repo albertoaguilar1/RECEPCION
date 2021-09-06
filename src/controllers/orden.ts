@@ -11,8 +11,8 @@ export const getOrders = async (req: Request, res: Response): Promise<Response> 
 
 
 export const createOrders = async (req: Request, res: Response): Promise<Response> => {
-    const newItem = getRepository(Order).create(req.body);
-    const result = await getRepository(Order).save(newItem);
+    const newOrder = getRepository(Order).create(req.body);
+    const result = await getRepository(Order).save(newOrder);
     return res.json(result);
 };
 

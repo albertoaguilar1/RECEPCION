@@ -1,14 +1,13 @@
 import express, { Application } from "express";
 import morgan from "morgan";
-import bodyParser from "body-parser";
 import 'reflect-metadata';
 import indexRoute from './router/index.routes';
 import Orderitem from './router/orderitem.routes';
 import Orden from './router/orden.routes';
 import user from './router/usuario.routes';
 import Items from './router/item.routes';
-
 import { createConnection } from "typeorm";
+
 
 // Create contructor para  app y un apropiedad de tipo Application
 export class App {
@@ -36,6 +35,7 @@ export class App {
     middlewares() {
 
         this.app.use(morgan('dev'));
+        this.app.use(express.json())
 
     }
     routes() {

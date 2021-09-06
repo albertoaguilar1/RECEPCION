@@ -10,6 +10,9 @@ export const getItems = async (req: Request, res: Response): Promise<Response> =
 };
 
 export const createItems = async (req: Request, res: Response): Promise<Response> => {
+
+    console.log("Got request: " + req.statusCode);
+    console.log('request =' + JSON.stringify(req.body))
     const newItem = getRepository(Item).create(req.body);
     const result = await getRepository(Item).save(newItem);
     return res.json(result);
